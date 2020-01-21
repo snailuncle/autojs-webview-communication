@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 实例</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h2>autojs和webview的交互</h2>    
+    <div style="margin-left:50px">
+      <div class="row card">
+        <form>
+          <input name="appName" type="radio" value="时钟" checked="checked"/>时钟
+          <input name="appName" type="radio" value="小爱同学" />小爱同学
+        </form>
+        <button type="button" id="获取单选框选项" class="btn btn-primary m-auto ">获取单选框选项</button>
+      </div>
+      <div class="row card">
+        <button type="button" id="changeTitle" class="btn btn-primary m-auto ">改变title</button>
+      </div>
+    </div>
+    </div>
+  </body>
+  <script>
+    document.getElementById("获取单选框选项").onclick = function() {
+      var param = $("input[name='appName']:checked").val()
+      var obj = {
+        command: "打开app",
+        param: param
+      }
+      console.log(JSON.stringify(obj))
+    }
+    document
+      .getElementById('changeTitle')
+      .onclick = function () {
+        var clas=['语文','数学','英语','体育','物理','化学','地理'];
+        var x=Math.floor(Math.random()*(6+1-0)+0);
+        document.title='' + clas[x]
+      }
+  </script>
+</html>
