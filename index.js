@@ -56,3 +56,29 @@ htmlFilePath = files.path(htmlFilePath)
 webview.loadUrl("file://" + htmlFilePath)
 
 
+// autojs 改变网页
+
+function 改变网页中的时间 () {
+  webview.evaluateJavascript(";" + getDate.toString() + ";getDate();", function (s) {
+    console.log(s)
+  })
+}
+
+function getDate () {
+  //获取当前时间
+  var date = new Date();
+  //格式化为本地时间格式
+  var date1 = date.toLocaleString();
+  //获取div
+  var div1 = document.getElementById("dateTime");
+  //将时间写入div
+  div1.innerHTML = date1;
+  return date1
+}
+
+setInterval(
+  function () {
+    改变网页中的时间()
+  }, 1000
+)
+
